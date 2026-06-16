@@ -291,7 +291,7 @@ Depending on where you live, you may have rights regarding your personal informa
 - Adjust sensitivity and coaching options
 - Manage or cancel subscriptions in Google Play
 
-### 10.2 Access, deletion, correction, and portability
+### 10.2 Access, deletion, correction, and portability {#request-data-deletion}
 
 Because most data is stored locally on your device, you can:
 
@@ -299,7 +299,7 @@ Because most data is stored locally on your device, you can:
 - **Delete local App data:** Android **Settings → Apps → Spectrum Sync → Storage → Clear data**
 - **Uninstall:** Removes the App and local App data from your device
 
-To request help deleting information you sent us by email, contact [hallanhype@gmail.com](mailto:hallanhype@gmail.com).
+To request help deleting information you sent us by email, contact [hallanhype@gmail.com](mailto:hallanhype@gmail.com?subject=Spectrum%20Sync%20Data%20Deletion%20Request).
 
 ### 10.3 European Economic Area (EEA), UK, and Switzerland (GDPR)
 
