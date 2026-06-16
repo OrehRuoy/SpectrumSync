@@ -14,7 +14,7 @@ Spectrum Sync is a social language coaching tool designed to help neurodivergent
 **Developer / Data Controller:** Brock Hall  
 **Contact email:** [hallanhype@gmail.com](mailto:hallanhype@gmail.com)  
 **Android application ID:** `com.spectrumsync.keyboard`  
-**Privacy policy URL:** https://spectrumsync.app/privacy
+**Privacy policy URL:** https://orehruoy.github.io/SpectrumSync/privacy-policy.html
 
 By downloading, installing, or using Spectrum Sync, you agree to this Privacy Policy. If you do not agree, do not use the App.
 
