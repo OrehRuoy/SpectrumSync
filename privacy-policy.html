@@ -109,7 +109,7 @@
   <header>
     <h1>Privacy Policy</h1>
     <p><strong>Spectrum Sync</strong></p>
-    <p>Effective date: June 16, 2026 &nbsp;|&nbsp; Last updated: June 16, 2026</p>
+    <p>Effective date: June 16, 2026 &nbsp;|&nbsp; Last updated: July 4, 2026</p>
   </header>
 
   <main>
@@ -158,7 +158,7 @@
         <li>AI analysis is performed <strong>on your device when possible</strong> (Gemini Nano). If on-device AI is unavailable, <strong>limited text may be sent to Google’s cloud AI</strong> through Firebase AI Logic.</li>
         <li>We <strong>do not sell your personal information</strong>.</li>
         <li>We <strong>do not use third-party advertising networks</strong>.</li>
-        <li>We <strong>do not include third-party analytics or crash reporting SDKs</strong> in the App at this time.</li>
+        <li>We use <strong>Google Analytics for Firebase</strong> to collect anonymous app usage statistics (such as sessions and feature engagement). We do <strong>not</strong> send message content or coaching text to analytics.</li>
         <li>Most App data stays <strong>on your device</strong>. Subscription status is handled by <strong>Google Play</strong>.</li>
       </ul>
 
@@ -224,7 +224,7 @@
       <p>Purchases, free trials, and subscription status are processed by <strong>Google Play Billing</strong>. Google may provide us with:</p>
       <ul>
         <li>Whether you have an active subscription or trial entitlement</li>
-        <li>Product identifiers (for example <code>premium_access_monthly</code>)</li>
+        <li>Product identifiers (for example <code>premium_access_monthly</code>, <code>premium_access_yearly</code>)</li>
         <li>Purchase tokens and related billing metadata needed to verify premium access</li>
       </ul>
       <p>We do <strong>not</strong> receive or store your full payment card number. Payment processing is handled by Google.</p>
@@ -238,6 +238,17 @@
         <li>Firebase / Google API request metadata required to deliver AI responses</li>
       </ul>
       <p>We do not intentionally collect precise location data for coaching.</p>
+
+      <h4>E. App usage analytics (Firebase Analytics)</h4>
+      <p>When you open the Spectrum Sync app, we use <strong>Google Analytics for Firebase</strong> to collect limited, anonymous usage information, such as:</p>
+      <ul>
+        <li>App opens and session counts</li>
+        <li>Screen or tab views within the app</li>
+        <li>Device model, OS version, and app version</li>
+        <li>General engagement metrics (for example retention)</li>
+      </ul>
+      <p>This analytics data helps us understand how the app is used and improve reliability and features. <strong>It does not include the text you type, coaching suggestions, or message content.</strong> Analytics runs in the main app; the coaching accessibility service does not send your drafts to analytics.</p>
+      <p>Google processes this data as our service provider. See <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Google's Privacy Policy</a> for more information.</p>
 
       <h3>3.3 Information We Do Not Collect</h3>
       <p>We do <strong>not</strong> intentionally collect:</p>
@@ -450,6 +461,7 @@
       <ul>
         <li>Collects <strong>user-provided text</strong> for <strong>app functionality</strong> (coaching) when the accessibility service is enabled</li>
         <li>Collects <strong>app activity / settings</strong> locally for functionality</li>
+        <li>Collects <strong>anonymous app usage analytics</strong> via Google Analytics for Firebase (main app only; no message content)</li>
         <li>Processes <strong>purchase history / subscription status</strong> via Google Play</li>
         <li>Does <strong>not</strong> sell data</li>
         <li>Uses <strong>encryption in transit</strong> for cloud AI requests</li>
