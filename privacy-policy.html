@@ -240,14 +240,16 @@
       <p>We do not intentionally collect precise location data for coaching.</p>
 
       <h4>E. App usage analytics (Firebase Analytics)</h4>
-      <p>When you open the Spectrum Sync app, we use <strong>Google Analytics for Firebase</strong> to collect limited, anonymous usage information, such as:</p>
+      <p>When you use Spectrum Sync, we use <strong>Google Analytics for Firebase</strong> to collect limited, anonymous usage information, such as:</p>
       <ul>
         <li>App opens and session counts</li>
         <li>Screen or tab views within the app</li>
         <li>Device model, OS version, and app version</li>
         <li>General engagement metrics (for example retention)</li>
+        <li>Whether coaching cloud features were used at least once (service enabled)</li>
+        <li>When a trial user reaches the daily coaching limit, including which day of the trial (1–7)</li>
       </ul>
-      <p>This analytics data helps us understand how the app is used and improve reliability and features. <strong>It does not include the text you type, coaching suggestions, or message content.</strong> Analytics runs in the main app; the coaching accessibility service does not send your drafts to analytics.</p>
+      <p>This analytics data helps us understand how the app is used and improve reliability and features. <strong>It does not include the text you type, coaching suggestions, or message content.</strong> Engagement events from the coaching accessibility service are limited to those anonymous counters; drafts are never sent to analytics.</p>
       <p>Google processes this data as our service provider. See <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Google's Privacy Policy</a> for more information.</p>
 
       <h3>3.3 Information We Do Not Collect</h3>
@@ -320,7 +322,7 @@
       <p>On supported devices, analysis may run <strong>entirely on your device</strong> using <strong>Gemini Nano</strong> through Google on-device AI components (including AICore / ML Kit where available). In this mode, your coaching text is processed locally and is <strong>not sent to our servers</strong>.</p>
 
       <h3>Cloud fallback processing</h3>
-      <p>If on-device AI is unavailable or cannot produce a valid result, the App may send <strong>only the current sentence or line being analyzed</strong> (trimmed to an internal length limit) to <strong>Google’s generative AI services</strong> through <strong>Firebase AI Logic</strong>, using models such as <strong>Gemini 2.5 Flash</strong>.</p>
+      <p>If on-device AI is unavailable or cannot produce a valid result, the App may send <strong>only the current sentence or line being analyzed</strong> (trimmed to an internal length limit) to <strong>Google’s generative AI services</strong> through <strong>Firebase AI Logic</strong>, using models such as <strong>Gemini 3.5 Flash-Lite</strong>.</p>
       <p>Cloud requests are subject to app-side limits, including approximate caps of:</p>
       <ul>
         <li><strong>25 cloud coaching requests per day</strong> during the free trial period</li>
@@ -461,7 +463,7 @@
       <ul>
         <li>Collects <strong>user-provided text</strong> for <strong>app functionality</strong> (coaching) when the accessibility service is enabled</li>
         <li>Collects <strong>app activity / settings</strong> locally for functionality</li>
-        <li>Collects <strong>anonymous app usage analytics</strong> via Google Analytics for Firebase (main app only; no message content)</li>
+        <li>Collects <strong>anonymous app usage analytics</strong> via Google Analytics for Firebase (no message content; includes limited engagement events such as service enabled and trial daily-limit reached)</li>
         <li>Processes <strong>purchase history / subscription status</strong> via Google Play</li>
         <li>Does <strong>not</strong> sell data</li>
         <li>Uses <strong>encryption in transit</strong> for cloud AI requests</li>

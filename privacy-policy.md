@@ -1,7 +1,7 @@
 # Privacy Policy for Spectrum Sync
 
 **Effective date:** June 16, 2026  
-**Last updated:** June 16, 2026
+**Last updated:** July 4, 2026
 
 ---
 
@@ -29,7 +29,7 @@ By downloading, installing, or using Spectrum Sync, you agree to this Privacy Po
 - AI analysis is performed **on your device when possible** (Gemini Nano). If on-device AI is unavailable, **limited text may be sent to Google’s cloud AI** through Firebase AI Logic.
 - We **do not sell your personal information**.
 - We **do not use third-party advertising networks**.
-- We **do not include third-party analytics or crash reporting SDKs** in the App at this time.
+- We use **Google Analytics for Firebase** to collect anonymous app usage statistics (such as sessions and feature engagement). We do **not** send message content or coaching text to analytics.
 - Most App data stays **on your device**. Subscription status is handled by **Google Play**.
 
 ---
@@ -102,7 +102,7 @@ These records **do not include the content of your messages**.
 Purchases, free trials, and subscription status are processed by **Google Play Billing**. Google may provide us with:
 
 - Whether you have an active subscription or trial entitlement
-- Product identifiers (for example `premium_access_monthly`)
+- Product identifiers (for example `premium_access_monthly`, `premium_access_yearly`)
 - Purchase tokens and related billing metadata needed to verify premium access
 
 We do **not** receive or store your full payment card number. Payment processing is handled by Google.
@@ -117,6 +117,21 @@ When AI inference runs, your device and our service providers may process limite
 - Firebase / Google API request metadata required to deliver AI responses
 
 We do not intentionally collect precise location data for coaching.
+
+#### E. App usage analytics (Firebase Analytics)
+
+When you use Spectrum Sync, we use **Google Analytics for Firebase** to collect limited, anonymous usage information, such as:
+
+- App opens and session counts
+- Screen or tab views within the app
+- Device model, OS version, and app version
+- General engagement metrics (for example retention)
+- Whether coaching cloud features were used at least once (service enabled)
+- When a trial user reaches the daily coaching limit, including which day of the trial (1–7)
+
+This analytics data helps us understand how the app is used and improve reliability and features. **It does not include the text you type, coaching suggestions, or message content.** Engagement events from the coaching accessibility service are limited to those anonymous counters; drafts are never sent to analytics.
+
+Google processes this data as our service provider. See [Google's Privacy Policy](https://policies.google.com/privacy) for more information.
 
 ### 3.3 Information We Do Not Collect
 
@@ -199,7 +214,7 @@ On supported devices, analysis may run **entirely on your device** using **Gemin
 
 ### Cloud fallback processing
 
-If on-device AI is unavailable or cannot produce a valid result, the App may send **only the current sentence or line being analyzed** (trimmed to an internal length limit) to **Google’s generative AI services** through **Firebase AI Logic**, using models such as **Gemini 2.5 Flash**.
+If on-device AI is unavailable or cannot produce a valid result, the App may send **only the current sentence or line being analyzed** (trimmed to an internal length limit) to **Google’s generative AI services** through **Firebase AI Logic**, using models such as **Gemini 3.5 Flash-Lite**.
 
 Cloud requests are subject to app-side limits, including approximate caps of:
 
@@ -367,6 +382,7 @@ For Google Play Console transparency, Spectrum Sync generally:
 
 - Collects **user-provided text** for **app functionality** (coaching) when the accessibility service is enabled
 - Collects **app activity / settings** locally for functionality
+- Collects **anonymous app usage analytics** via Google Analytics for Firebase (no message content; includes limited engagement events such as service enabled and trial daily-limit reached)
 - Processes **purchase history / subscription status** via Google Play
 - Does **not** sell data
 - Uses **encryption in transit** for cloud AI requests
