@@ -1,7 +1,7 @@
 # Privacy Policy for Spectrum Sync
 
 **Effective date:** June 16, 2026  
-**Last updated:** July 4, 2026
+**Last updated:** August 25, 2026
 
 ---
 
@@ -24,7 +24,7 @@ By downloading, installing, or using Spectrum Sync, you agree to this Privacy Po
 
 - Spectrum Sync **does not require you to create an account**.
 - The coaching feature works only if you **voluntarily enable** the Spectrum Sync Coach accessibility service in Android settings.
-- When coaching is active, the App may read **text you type in editable fields** in other apps so it can analyze tone and suggest improvements.
+- When coaching is active, the App may read **text you type in editable fields** in other apps so it can analyze tone and suggest improvements. For context, it may briefly keep the last few completed sentences in memory on your device (not saved to disk).
 - The App **does not read password fields**, **does not read most personal-data forms**, and **does not coach in blocked sensitive apps** (such as banking, payment, tax, healthcare, and password-manager apps).
 - AI analysis is performed **on your device when possible** (Gemini Nano). If on-device AI is unavailable, **limited text may be sent to Google’s cloud AI** through Firebase AI Logic.
 - We **do not sell your personal information**.
@@ -46,9 +46,12 @@ When the Spectrum Sync Coach accessibility service is enabled and coaching is no
 
 - Message drafts in messaging, email, and social apps
 - Notes and other conversational text in supported apps
-- The current sentence or line being composed (not necessarily your entire message history)
+- The current sentence or line being composed
+- A short-term rolling window of up to **four recently completed sentences** in the same app, kept only in device memory so the App can interpret the current sentence in context (for example, whether a short reply may sound dismissive after something heavy)
 
 This text is used **only** to provide coaching feedback (tone warnings, explanations, and suggested rewrites).
+
+This rolling window is **not** a saved message history, chat log, or transcript. It is never written to disk, settings, analytics, or our servers. Older sentences drop off as you type new ones. The window is cleared when you switch to a different app, after a short idle period (about 15 minutes), or when the coaching service or App process stops. While coaching is paused, the App does not add new sentences to this window or send them for analysis.
 
 We apply automated safeguards to **avoid reading or analyzing** text when:
 
@@ -214,7 +217,7 @@ On supported devices, analysis may run **entirely on your device** using **Gemin
 
 ### Cloud fallback processing
 
-If on-device AI is unavailable or cannot produce a valid result, the App may send **only the current sentence or line being analyzed** (trimmed to an internal length limit) to **Google’s generative AI services** through **Firebase AI Logic**, using models such as **Gemini 3.5 Flash-Lite**.
+If on-device AI is unavailable or cannot produce a valid result, the App may send the **current sentence or line being analyzed**, plus up to **four recently completed sentences** from short-term on-device memory for context, to **Google’s generative AI services** through **Firebase AI Logic**, using models such as **Gemini 3.5 Flash-Lite**. Each piece of text is trimmed to an internal length limit. Prior sentences are included only to help interpret the current sentence; they are not stored by us.
 
 Cloud requests are subject to app-side limits, including approximate caps of:
 
@@ -242,7 +245,7 @@ We share information only as described below.
 
 | Provider | Purpose | Data involved |
 |---------|---------|---------------|
-| **Google Firebase / Firebase AI Logic** | On-device and cloud AI inference | Trimmed coaching text (cloud fallback only), prompts/instructions, technical request metadata |
+| **Google Firebase / Firebase AI Logic** | On-device and cloud AI inference | Trimmed coaching text (cloud fallback only: current sentence and, when available, up to four recent sentences for context), prompts/instructions, technical request metadata |
 | **Google Play / Google Play Billing** | Subscriptions, trials, purchase verification | Purchase tokens, product IDs, subscription status |
 | **Google (Android platform services)** | Accessibility framework, on-device AI runtime | Text processed on-device per Google’s platform rules |
 
@@ -271,7 +274,7 @@ We do **not** sell or share personal information for cross-context behavioral ad
 | Data type | Retention |
 |----------|-----------|
 | Local settings (`social_coach_settings.json`) | Until you change settings, clear app data, or uninstall |
-| Coaching text in memory | Only while processing the current coaching request; not stored in a message history database by us |
+| Coaching text in memory | Current sentence is processed for the active coaching request. Up to four recently completed sentences may remain in RAM as short-term context until replaced, the app changes, idle timeout (~15 minutes), or the process stops. Not stored in a message history database by us |
 | Cloud usage counters | Stored locally; reset according to daily/hourly logic in the App |
 | Google Play purchase records | Retained by Google under Google’s policies; we retain only what is needed locally to verify premium access |
 | Support emails | Retained as long as needed to respond and maintain records, unless you request deletion |
@@ -286,7 +289,7 @@ We use reasonable administrative, technical, and organizational measures designe
 
 - Processing coaching text only when safeguards allow
 - Preferring on-device AI when available
-- Limiting cloud transmission to trimmed sentence-level text
+- Limiting cloud transmission to the current sentence plus, when available, a small number of recent sentences for context (each trimmed)
 - Using encrypted transport (HTTPS/TLS) for cloud AI requests
 - Storing settings locally in the App’s private storage area
 

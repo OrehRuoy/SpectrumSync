@@ -109,7 +109,7 @@
   <header>
     <h1>Privacy Policy</h1>
     <p><strong>Spectrum Sync</strong></p>
-    <p>Effective date: June 16, 2026 &nbsp;|&nbsp; Last updated: July 4, 2026</p>
+    <p>Effective date: June 16, 2026 &nbsp;|&nbsp; Last updated: August 25, 2026</p>
   </header>
 
   <main>
@@ -153,7 +153,7 @@
       <ul>
         <li>Spectrum Sync <strong>does not require you to create an account</strong>.</li>
         <li>The coaching feature works only if you <strong>voluntarily enable</strong> the Spectrum Sync Coach accessibility service in Android settings.</li>
-        <li>When coaching is active, the App may read <strong>text you type in editable fields</strong> in other apps so it can analyze tone and suggest improvements.</li>
+        <li>When coaching is active, the App may read <strong>text you type in editable fields</strong> in other apps so it can analyze tone and suggest improvements. For context, it may briefly keep the last few completed sentences in memory on your device (not saved to disk).</li>
         <li>The App <strong>does not read password fields</strong>, <strong>does not read most personal-data forms</strong>, and <strong>does not coach in blocked sensitive apps</strong> (such as banking, payment, tax, healthcare, and password-manager apps).</li>
         <li>AI analysis is performed <strong>on your device when possible</strong> (Gemini Nano). If on-device AI is unavailable, <strong>limited text may be sent to Google’s cloud AI</strong> through Firebase AI Logic.</li>
         <li>We <strong>do not sell your personal information</strong>.</li>
@@ -172,9 +172,11 @@
       <ul>
         <li>Message drafts in messaging, email, and social apps</li>
         <li>Notes and other conversational text in supported apps</li>
-        <li>The current sentence or line being composed (not necessarily your entire message history)</li>
+        <li>The current sentence or line being composed</li>
+        <li>A short-term rolling window of up to <strong>four recently completed sentences</strong> in the same app, kept only in device memory so the App can interpret the current sentence in context (for example, whether a short reply may sound dismissive after something heavy)</li>
       </ul>
       <p>This text is used <strong>only</strong> to provide coaching feedback (tone warnings, explanations, and suggested rewrites).</p>
+      <p>This rolling window is <strong>not</strong> a saved message history, chat log, or transcript. It is never written to disk, settings, analytics, or our servers. Older sentences drop off as you type new ones. The window is cleared when you switch to a different app, after a short idle period (about 15 minutes), or when the coaching service or App process stops. While coaching is paused, the App does not add new sentences to this window or send them for analysis.</p>
       <p>We apply automated safeguards to <strong>avoid reading or analyzing</strong> text when:</p>
       <ul>
         <li>The field is marked as a password field</li>
@@ -322,7 +324,7 @@
       <p>On supported devices, analysis may run <strong>entirely on your device</strong> using <strong>Gemini Nano</strong> through Google on-device AI components (including AICore / ML Kit where available). In this mode, your coaching text is processed locally and is <strong>not sent to our servers</strong>.</p>
 
       <h3>Cloud fallback processing</h3>
-      <p>If on-device AI is unavailable or cannot produce a valid result, the App may send <strong>only the current sentence or line being analyzed</strong> (trimmed to an internal length limit) to <strong>Google’s generative AI services</strong> through <strong>Firebase AI Logic</strong>, using models such as <strong>Gemini 3.5 Flash-Lite</strong>.</p>
+      <p>If on-device AI is unavailable or cannot produce a valid result, the App may send the <strong>current sentence or line being analyzed</strong>, plus up to <strong>four recently completed sentences</strong> from short-term on-device memory for context, to <strong>Google’s generative AI services</strong> through <strong>Firebase AI Logic</strong>, using models such as <strong>Gemini 3.5 Flash-Lite</strong>. Each piece of text is trimmed to an internal length limit. Prior sentences are included only to help interpret the current sentence; they are not stored by us.</p>
       <p>Cloud requests are subject to app-side limits, including approximate caps of:</p>
       <ul>
         <li><strong>25 cloud coaching requests per day</strong> during the free trial period</li>
@@ -349,7 +351,7 @@
           <tr>
             <td><strong>Google Firebase / Firebase AI Logic</strong></td>
             <td>On-device and cloud AI inference</td>
-            <td>Trimmed coaching text (cloud fallback only), prompts/instructions, technical request metadata</td>
+            <td>Trimmed coaching text (cloud fallback only: current sentence and, when available, up to four recent sentences for context), prompts/instructions, technical request metadata</td>
           </tr>
           <tr>
             <td><strong>Google Play / Google Play Billing</strong></td>
@@ -381,7 +383,7 @@
         </thead>
         <tbody>
           <tr><td>Local settings (<code>social_coach_settings.json</code>)</td><td>Until you change settings, clear app data, or uninstall</td></tr>
-          <tr><td>Coaching text in memory</td><td>Only while processing the current coaching request; not stored in a message history database by us</td></tr>
+          <tr><td>Coaching text in memory</td><td>Current sentence is processed for the active coaching request. Up to four recently completed sentences may remain in RAM as short-term context until replaced, the app changes, idle timeout (~15 minutes), or the process stops. Not stored in a message history database by us</td></tr>
           <tr><td>Cloud usage counters</td><td>Stored locally; reset according to daily/hourly logic in the App</td></tr>
           <tr><td>Google Play purchase records</td><td>Retained by Google under Google’s policies; we retain only what is needed locally to verify premium access</td></tr>
           <tr><td>Support emails</td><td>Retained as long as needed to respond and maintain records, unless you request deletion</td></tr>
@@ -394,7 +396,7 @@
       <ul>
         <li>Processing coaching text only when safeguards allow</li>
         <li>Preferring on-device AI when available</li>
-        <li>Limiting cloud transmission to trimmed sentence-level text</li>
+        <li>Limiting cloud transmission to the current sentence plus, when available, a small number of recent sentences for context (each trimmed)</li>
         <li>Using encrypted transport (HTTPS/TLS) for cloud AI requests</li>
         <li>Storing settings locally in the App’s private storage area</li>
       </ul>
