@@ -109,11 +109,13 @@
   <header>
     <h1>Privacy Policy</h1>
     <p><strong>Spectrum Sync</strong></p>
-    <p>Effective date: June 16, 2026 &nbsp;|&nbsp; Last updated: August 25, 2026</p>
+    <p>Effective date: June 16, 2026 &nbsp;|&nbsp; Last updated: October 26, 2026</p>
   </header>
 
   <main>
     <article>
+      <p><strong>Your privacy comes first. Here's how Spectrum Sync protects it.</strong></p>
+
       <nav class="toc" aria-label="Table of contents">
         <strong>Contents</strong>
         <ol>
@@ -124,6 +126,7 @@
           <li><a href="#accessibility-disclosure">Accessibility Service Disclosure</a></li>
           <li><a href="#ai-processing">AI Processing</a></li>
           <li><a href="#how-we-share">How We Share Information</a></li>
+          <li><a href="#feedback-form">Feedback Form</a></li>
           <li><a href="#data-retention">Data Retention</a></li>
           <li><a href="#data-security">Data Security</a></li>
           <li><a href="#request-data-deletion">Request Data Deletion</a></li>
@@ -153,9 +156,11 @@
       <ul>
         <li>Spectrum Sync <strong>does not require you to create an account</strong>.</li>
         <li>The coaching feature works only if you <strong>voluntarily enable</strong> the Spectrum Sync Coach accessibility service in Android settings.</li>
-        <li>When coaching is active, the App may read <strong>text you type in editable fields</strong> in other apps so it can analyze tone and suggest improvements. For context, it may briefly keep the last few completed sentences in memory on your device (not saved to disk).</li>
-        <li>The App <strong>does not read password fields</strong>, <strong>does not read most personal-data forms</strong>, and <strong>does not coach in blocked sensitive apps</strong> (such as banking, payment, tax, healthcare, and password-manager apps).</li>
-        <li>AI analysis is performed <strong>on your device when possible</strong> (Gemini Nano). If on-device AI is unavailable, <strong>limited text may be sent to Google’s cloud AI</strong> through Firebase AI Logic.</li>
+        <!-- The 4 below is RecentSentenceMemory.CAPACITY. -->
+        <li>When coaching is active, the App runs only in <strong>supported messaging, email, and social apps</strong> (not banking apps or browsers). It reads <strong>text you type in message boxes</strong> in those apps so it can suggest wording and tone. After you stop typing (or when a sentence ends), the current sentence plus up to your last 4 sentences in that app may be <strong>processed on your device</strong> or, if needed, <strong>sent to Google's cloud AI</strong> through Firebase AI Logic. We do not save that text on our servers, sell it, or use it for ads.</li>
+        <li>Those earlier sentences stay in memory on the device until you switch apps, about 15 minutes pass, or the coaching process stops. They are not written to a file.</li>
+        <li>The App does not coach in banking, payment, password managers, or browsers. It skips fields that report a password type, including visible password, web password, and number password. A custom field that does not report that type may still be readable. It also skips most personal-data forms.</li>
+        <li>While coaching in other apps, the same prompt is tried on your device first (Gemini Nano). If that is missing or the reply is not usable, the text is sent to Google's cloud AI through Firebase AI Logic. The in-app Try it demo skips on-device AI and sends only that one sentence to the cloud. We do not control how long Google keeps a cloud prompt.</li>
         <li>We <strong>do not sell your personal information</strong>.</li>
         <li>We <strong>do not use third-party advertising networks</strong>.</li>
         <li>We use <strong>Google Analytics for Firebase</strong> to collect anonymous app usage statistics (such as sessions and feature engagement). We do <strong>not</strong> send message content or coaching text to analytics.</li>
@@ -176,13 +181,14 @@
         <li>A short-term rolling window of up to <strong>four recently completed sentences</strong> in the same app, kept only in device memory so the App can interpret the current sentence in context (for example, whether a short reply may sound dismissive after something heavy)</li>
       </ul>
       <p>This text is used <strong>only</strong> to provide coaching feedback (tone warnings, explanations, and suggested rewrites).</p>
-      <p>This rolling window is <strong>not</strong> a saved message history, chat log, or transcript. It is never written to disk, settings, analytics, or our servers. Older sentences drop off as you type new ones. The window is cleared when you switch to a different app, after a short idle period (about 15 minutes), or when the coaching service or App process stops. While coaching is paused, the App does not add new sentences to this window or send them for analysis.</p>
+      <p>This rolling window is <strong>not</strong> a saved message history, chat log, or transcript. It is not written to disk, settings, analytics, or our servers. Older sentences drop off as you type new ones. The window is cleared when you switch to a different app, after a short idle period (about 15 minutes), or when the coaching service or App process stops. While coaching is paused, the App does not add new sentences to this window or send them for analysis.</p>
+      <p>If the AI reply is not usable JSON, that reply is written to the device log and may quote your sentence. Debug builds also keep the first 80 characters of that reply in memory. Message text is not written into settings, cloud-usage counters, or analytics. Analytics parameters are fixed tokens. The in-app Try it check logs only the length of the demo sentence. If another app blocks a direct rewrite, the suggestion (not your original text) is copied to the clipboard. The Android ID is read on the device for a premium test allowlist and logged once; it is not an analytics parameter and it is not your message.</p>
       <p>We apply automated safeguards to <strong>avoid reading or analyzing</strong> text when:</p>
       <ul>
-        <li>The field is marked as a password field</li>
+        <li>The field reports a password input type, including a visible password, web password, or number password, or Android marks it as a password field</li>
         <li>The field appears to be a search box, address form, or personal-data form (for example: name, email address, phone number, payment card, OTP, SSN, date of birth, bank account, tax ID, verification code)</li>
         <li>The field is marked with Android <code>no_suggestions</code> / similar signals</li>
-        <li>The foreground app is on our sensitive-app blocklist (banking, payment, crypto, tax, healthcare, password managers, and similar categories)</li>
+        <li>The foreground app is on our sensitive-app blocklist (banking, payment, crypto, tax, healthcare, password managers, browsers, and similar categories), or it is not on the exact list of supported apps</li>
         <li>You have blocked the app in Spectrum Sync settings</li>
         <li>You have paused coaching</li>
       </ul>
@@ -201,6 +207,9 @@
 
       <h4>C. Support communications</h4>
       <p>If you email us at <a href="mailto:hallanhype@gmail.com">hallanhype@gmail.com</a>, we receive the information you choose to send (such as your email address, message content, and any attachments).</p>
+
+      <h4>D. In-app feedback (optional)</h4>
+      <p>If you choose to send feedback from inside the App, we receive what you type in the feedback form. If you enter an email address, we receive that too so we can reply. The form also sends your app build version and basic device information (the same details shown in the form before you submit). Submissions are delivered through <a href="https://web3forms.com" rel="noopener noreferrer">Web3Forms</a> to the developer. Feedback is used only to respond to you and improve the App. You do not have to use this form.</p>
 
       <h3>3.2 Information Collected Automatically</h3>
 
@@ -277,7 +286,7 @@
           <tr><td><strong>Manage subscriptions</strong></td><td>Verify premium access and free-trial eligibility via Google Play</td></tr>
           <tr><td><strong>Limit cloud AI usage</strong></td><td>Enforce daily/hourly caps and cooldowns for cloud fallback requests</td></tr>
           <tr><td><strong>Improve reliability</strong></td><td>Diagnose AI/network failures using local debug traces in development builds</td></tr>
-          <tr><td><strong>Respond to you</strong></td><td>Answer support emails</td></tr>
+          <tr><td><strong>Respond to you</strong></td><td>Answer support emails and optional in-app feedback</td></tr>
           <tr><td><strong>Legal compliance</strong></td><td>Meet legal obligations and enforce our terms</td></tr>
         </tbody>
       </table>
@@ -296,7 +305,7 @@
       </ul>
 
       <h3>Why we use it</h3>
-      <p>The accessibility service is the core mechanism that lets Spectrum Sync coach you <strong>while you use your normal keyboard</strong> in other apps. Without it, real-time coaching cannot function.</p>
+      <p>The accessibility service is how Spectrum Sync offers wording and tone help <strong>alongside the keyboard you already use</strong>. Without it, real-time coaching cannot function. Android calls this Accessibility. Spectrum Sync uses it only to read the message box you're typing in, in the supported apps.</p>
 
       <h3>What we do not use it for</h3>
       <p>We do <strong>not</strong> use the accessibility service to:</p>
@@ -312,7 +321,7 @@
       <ol>
         <li>Turning off <strong>Spectrum Sync Coach</strong> in Android <strong>Settings → Accessibility</strong></li>
         <li>Using <strong>Pause coaching</strong> inside Spectrum Sync</li>
-        <li>Adding apps to <strong>Blocked apps</strong> in Spectrum Sync settings</li>
+        <li>Turning an app off, or blocking another package, under <strong>Apps</strong> in Spectrum Sync settings</li>
         <li>Uninstalling the App</li>
       </ol>
       <p>Disabling the accessibility service does not automatically delete local settings files on your device.</p>
@@ -324,7 +333,10 @@
       <p>On supported devices, analysis may run <strong>entirely on your device</strong> using <strong>Gemini Nano</strong> through Google on-device AI components (including AICore / ML Kit where available). In this mode, your coaching text is processed locally and is <strong>not sent to our servers</strong>.</p>
 
       <h3>Cloud fallback processing</h3>
-      <p>If on-device AI is unavailable or cannot produce a valid result, the App may send the <strong>current sentence or line being analyzed</strong>, plus up to <strong>four recently completed sentences</strong> from short-term on-device memory for context, to <strong>Google’s generative AI services</strong> through <strong>Firebase AI Logic</strong>, using models such as <strong>Gemini 3.5 Flash-Lite</strong>. Each piece of text is trimmed to an internal length limit. Prior sentences are included only to help interpret the current sentence; they are not stored by us.</p>
+      <p>While you type in another app, the same prompt is sent to on-device Gemini Nano first. Cloud is used only when Nano is missing or returns JSON the App cannot use. That request goes over HTTPS to <strong>Google’s generative AI services</strong> through <strong>Firebase AI Logic</strong>, using the model <strong>gemini-3.5-flash-lite</strong>. The in-app Try it demo does not try on-device AI. It sends only that one demo sentence to the cloud.</p>
+      <p>The user message is the current sentence, cut off at 280 characters, plus up to four earlier sentences from that app (also cut off at 280 characters each, oldest first, labeled as context and not to rewrite). It also includes the foreground app package name and a register label: "business / professional", "personal / casual", or "mixed or unclear". The system instruction is the coaching rules and sensitivity, not the message, plus a foreground-app hint. Try it sends no earlier sentences and a blank package name, so the hint is "unknown".</p>
+      <p>A check runs when the trimmed draft ends in <code>.</code>, <code>!</code>, or <code>?</code>, when the keyboard hides while you are still in the field, or about 2 seconds after you stop typing (about 3.5 seconds after a deletion). A pause check needs at least 6 characters and 3 words. The keyboard-hide check needs at least 6 characters. A trailing newline is treated as a finished sentence in the service, but the check still continues only when the trimmed text ends in <code>.</code>, <code>!</code>, or <code>?</code>.</p>
+      <p>We do not store that prompt. Google's retention of prompts sent to Firebase AI Logic is not something this App can turn off or verify.</p>
       <p>Cloud requests are subject to app-side limits, including approximate caps of:</p>
       <ul>
         <li><strong>25 cloud coaching requests per day</strong> during the free trial period</li>
@@ -363,6 +375,11 @@
             <td>Accessibility framework, on-device AI runtime</td>
             <td>Text processed on-device per Google’s platform rules</td>
           </tr>
+          <tr>
+            <td><strong>Web3Forms</strong></td>
+            <td>Deliver optional in-app feedback to the developer</td>
+            <td>Your feedback message, optional email address, app version, and device info you see listed in the form</td>
+          </tr>
         </tbody>
       </table>
       <p>We do not authorize these providers to use your coaching text for their own advertising.</p>
@@ -376,7 +393,16 @@
       <h3>7.4 We do not sell personal information</h3>
       <p>We do <strong>not</strong> sell or share personal information for cross-context behavioral advertising.</p>
 
-      <h2 id="data-retention">8. Data Retention</h2>
+      <h2 id="feedback-form">8. Feedback Form</h2>
+      <p>The App includes an optional feedback form (Settings or support flows). When you submit it:</p>
+      <ul>
+        <li>We receive the message you write and, if you provide one, your email address for replies.</li>
+        <li>We also receive the app version and device information shown in the form (for example build number and device model).</li>
+        <li>Data is sent over HTTPS to <strong>Web3Forms</strong> (<a href="https://web3forms.com" rel="noopener noreferrer">web3forms.com</a>), which forwards it to the developer inbox.</li>
+      </ul>
+      <p>We use feedback only to answer you and improve Spectrum Sync. We do not use it for advertising or sell it. Email is optional; you can leave it blank if you do not want a direct reply.</p>
+
+      <h2 id="data-retention">9. Data Retention</h2>
       <table>
         <thead>
           <tr><th>Data type</th><th>Retention</th></tr>
@@ -387,11 +413,12 @@
           <tr><td>Cloud usage counters</td><td>Stored locally; reset according to daily/hourly logic in the App</td></tr>
           <tr><td>Google Play purchase records</td><td>Retained by Google under Google’s policies; we retain only what is needed locally to verify premium access</td></tr>
           <tr><td>Support emails</td><td>Retained as long as needed to respond and maintain records, unless you request deletion</td></tr>
+          <tr><td>In-app feedback (via Web3Forms)</td><td>Retained as long as needed to respond and improve the App, unless you request deletion</td></tr>
         </tbody>
       </table>
       <p>Because we do not operate user accounts on our own servers, most deletion can be accomplished on-device.</p>
 
-      <h2 id="data-security">9. Data Security</h2>
+      <h2 id="data-security">10. Data Security</h2>
       <p>We use reasonable administrative, technical, and organizational measures designed to protect information, including:</p>
       <ul>
         <li>Processing coaching text only when safeguards allow</li>
@@ -402,10 +429,10 @@
       </ul>
       <p>No method of transmission or storage is 100% secure. We cannot guarantee absolute security.</p>
 
-      <h2 id="your-rights">10. Your Choices and Rights</h2>
+      <h2 id="your-rights">11. Your Choices and Rights</h2>
       <p>Depending on where you live, you may have rights regarding your personal information.</p>
 
-      <h3>10.1 Controls in the App</h3>
+      <h3>11.1 Controls in the App</h3>
       <ul>
         <li>Enable or disable the accessibility service</li>
         <li>Pause coaching</li>
@@ -414,7 +441,7 @@
         <li>Manage or cancel subscriptions in Google Play</li>
       </ul>
 
-      <h3 id="request-data-deletion">10.2 Access, deletion, correction, and portability</h3>
+      <h3 id="request-data-deletion">11.2 Access, deletion, correction, and portability</h3>
       <p>Because most data is stored locally on your device, you can:</p>
       <ul>
         <li><strong>Access / correct settings:</strong> Open Spectrum Sync settings</li>
@@ -423,16 +450,16 @@
       </ul>
       <p>To request help deleting information you sent us by email, contact <a href="mailto:hallanhype@gmail.com?subject=Spectrum%20Sync%20Data%20Deletion%20Request">hallanhype@gmail.com</a>.</p>
 
-      <h3>10.3 European Economic Area (EEA), UK, and Switzerland (GDPR)</h3>
+      <h3>11.3 European Economic Area (EEA), UK, and Switzerland (GDPR)</h3>
       <p>If GDPR applies, our legal bases include consent (accessibility service), contract (premium features), and legitimate interests (security and cloud AI abuse prevention). You may have rights to access, rectify, erase, restrict, object, and data portability, and to lodge a complaint with your supervisory authority.</p>
 
-      <h3>10.4 California (CCPA/CPRA)</h3>
+      <h3>11.4 California (CCPA/CPRA)</h3>
       <p>California residents may have the right to know, access, delete, and correct personal information, and to opt out of sale/sharing. As stated above, we <strong>do not sell</strong> personal information.</p>
 
-      <h3>10.5 Response time</h3>
+      <h3>11.5 Response time</h3>
       <p>We will respond to verified privacy requests within the timeframes required by applicable law.</p>
 
-      <h2 id="permissions">11. Permissions We Request</h2>
+      <h2 id="permissions">12. Permissions We Request</h2>
       <table>
         <thead>
           <tr><th>Permission / capability</th><th>Why we need it</th></tr>
@@ -449,35 +476,36 @@
       </table>
       <p>You can deny or revoke permissions in Android settings. Some features will not work without the accessibility service.</p>
 
-      <h2 id="children">12. Children's Privacy</h2>
+      <h2 id="children">13. Children's Privacy</h2>
       <p>Spectrum Sync is <strong>not directed to children under 13</strong> (or the minimum age required in your jurisdiction). We do not knowingly collect personal information from children.</p>
       <p>If you believe a child has provided us information, contact <a href="mailto:hallanhype@gmail.com">hallanhype@gmail.com</a> and we will take appropriate steps to delete it.</p>
 
-      <h2 id="international-transfers">13. International Data Transfers</h2>
+      <h2 id="international-transfers">14. International Data Transfers</h2>
       <p>If you use cloud AI fallback, your coaching text and related request data may be processed on servers operated by Google in the <strong>United States</strong> and other countries where Google or its subprocessors operate.</p>
       <p>Where required, we rely on appropriate safeguards such as standard contractual clauses or equivalent mechanisms provided by our service providers.</p>
 
-      <h2 id="third-party">14. Third-Party Links and Services</h2>
+      <h2 id="third-party">15. Third-Party Links and Services</h2>
       <p>The App may link to external resources (for example Google Play subscription management). This Privacy Policy does not apply to third-party websites or services. Review their privacy policies separately.</p>
 
-      <h2 id="google-play">15. Google Play Data Safety Summary</h2>
+      <h2 id="google-play">16. Google Play Data Safety Summary</h2>
       <p>For Google Play Console transparency, Spectrum Sync generally:</p>
       <ul>
         <li>Collects <strong>user-provided text</strong> for <strong>app functionality</strong> (coaching) when the accessibility service is enabled</li>
         <li>Collects <strong>app activity / settings</strong> locally for functionality</li>
         <li>Collects <strong>anonymous app usage analytics</strong> via Google Analytics for Firebase (no message content; includes limited engagement events such as service enabled and trial daily-limit reached)</li>
         <li>Processes <strong>purchase history / subscription status</strong> via Google Play</li>
+        <li>May collect <strong>optional email address</strong> and <strong>user-provided feedback text</strong> when you use the in-app feedback form (app functionality / support)</li>
         <li>Does <strong>not</strong> sell data</li>
         <li>Uses <strong>encryption in transit</strong> for cloud AI requests</li>
         <li>Allows users to request deletion via app data clearing, uninstallation, or email contact</li>
       </ul>
-      <p class="muted">Actual Data Safety form answers should match your release configuration.</p>
+      <p class="muted">The answers prepared for the Play Console Data Safety form are in <code>docs/DATA_SAFETY_ANSWERS.md</code>. That file is a worksheet. It is not a record that the form was submitted. Message text is not marked ephemeral there, because the four-sentence window can remain in memory for about 15 minutes and Google's retention of a cloud prompt is not known.</p>
 
-      <h2 id="changes">16. Changes to This Privacy Policy</h2>
+      <h2 id="changes">17. Changes to This Privacy Policy</h2>
       <p>We may update this Privacy Policy from time to time. When we do, we will revise the <strong>Last updated</strong> date at the top. If changes are material, we will provide additional notice where required (for example in-app notice or updated Play Store listing).</p>
       <p>Continued use after the effective date of an updated policy means you accept the revised policy.</p>
 
-      <h2 id="contact">17. Contact Us</h2>
+      <h2 id="contact">18. Contact Us</h2>
       <p>If you have questions, concerns, or privacy requests, contact:</p>
       <p>
         <strong>Brock Hall</strong><br>
